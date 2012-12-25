@@ -11,7 +11,7 @@ var locations = {"London": "london",
 		 "Rome": "rome",
 		 "Hamburg": "hamburg",
 		 "Paris": "paris",
-		 "Mexico DF": "mexico"
+		 "Mexico": "mexico"
 };
 
 var listLocations = [];

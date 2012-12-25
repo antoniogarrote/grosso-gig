@@ -9,7 +9,8 @@ var locations = {
     berlin: "http://www.songkick.com/metro_areas/28443-germany-berlin",
     rome: "http://www.songkick.com/metro_areas/30366-italy-rome",
     paris: "http://www.songkick.com/metro_areas/28909-france-paris",
-    hamburg: "http://www.songkick.com/metro_areas/28498-germany-hamburg"
+    hamburg: "http://www.songkick.com/metro_areas/28498-germany-hamburg",
+    mexico: "http://www.songkick.com/metro_areas/34385-mexico-mexico-city"
 };
 
 var parseLocation = function(location, pageNumber, endMonth, endYear, acum, cb) {
