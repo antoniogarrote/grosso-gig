@@ -5,13 +5,13 @@ block content
       a(href="/")
         | Grosso / Gig
   .row-fluid#settings-row
-    .span1.offset3.header-cell#location-name
+    .span3.offset3.header-cell#location-name
       a(href="/Gigs/#{prevLocation}/#{year}/#{monthName}#{tagsArgs}")
         <&nbsp;
       | #{locationName}
       a(href="/Gigs/#{nextLocation}/#{year}/#{monthName}#{tagsArgs}")
         &nbsp;>
-    .span2.offset3.header-cell#month-name
+    .span3.header-cell#month-name
       a(href="/Gigs/#{locationName}/#{prevYear}/#{prevMonth}#{tagsArgs}")
         <&nbsp;
       | #{monthName}

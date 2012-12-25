@@ -30,7 +30,7 @@ a.gig-main-date:hover {
 	height: 60px;
 	font-family: 'New Rocker', cursive;
 	font-weight: bolder;
-	font-size: 40px;
+	font-size: 60px;
 	text-align: center;
 	margin-top: 60px;
 	margin-bottom: 10px;
@@ -110,6 +110,12 @@ a.gig-main-date:hover {
     background-color: black
 }
 
+@media only screen and (max-device-width: 480px) {
+    .minilogo {
+	font-size: 200%;
+    }
+}
+
 .minigigs {
   margin-left: 1%;
 }
@@ -135,6 +141,17 @@ a.gig-main-date:hover {
     font-size: 40px;
     margin-bottom: 20px;
     font-weight: bold
+}
+
+@media only screen and (max-device-width: 480px) {
+
+    #settings-row .header-cell {
+	font-size: 20px
+    }
+}
+
+#month-name {
+    text-align: right
 }
 
 #settings-row a:link {
@@ -180,8 +197,15 @@ a.gig-main-date:hover {
     padding-top: 13px;
     padding-left: 10px
 }
-zppp.gig-cell .artist-info .location {
+
+.gig-cell .artist-info .location {
     font-weight: normal;
+}
+
+@media only screen and (max-device-width: 480px) {
+    .gig-cell .artist-info .artist {
+	font-size: 25px;
+    }
 }
 
 .gig-cell .artist-info div {
@@ -211,6 +235,14 @@ zppp.gig-cell .artist-info .location {
 .gig-cell .date .span5 {
     width: 100%;
     padding-top: 10%;
+}
+
+@media only screen and (max-device-width: 480px) {
+
+    .gig-cell .date .span5 {
+	padding-top: 15%;
+    }
+
 }
 
 .gig-cell .popularity {
@@ -307,6 +339,13 @@ a#select-tags-link {
     font-weight: bold;
     color: white
 }
+
+@media only screen and (max-device-width: 480px) {
+    .logo {
+	font-size: 600%;
+    }
+}
+
 
 #bottom {
     margin-top: 30px;
