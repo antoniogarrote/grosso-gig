@@ -10,7 +10,8 @@ var locations = {"London": "london",
 		 "Berlin": "berlin",
 		 "Rome": "rome",
 		 "Hamburg": "hamburg",
-		 "Paris": "paris"
+		 "Paris": "paris",
+		 "Mexico DF": "mexico"
 };
 
 var listLocations = [];
