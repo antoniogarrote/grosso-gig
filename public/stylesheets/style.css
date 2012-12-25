@@ -1,0 +1,331 @@
+a.gig-main-date:link {
+    text-decoration: none;
+    color: black;    
+}
+
+a.gig-main-date:visited {
+    color: black
+}
+
+a.gig-main-date:hover {
+    color: orange
+}
+
+
+#title {
+    height: 80px;
+    font-family: 'New Rocker', cursive;
+    font-weight: bolder;
+    font-size: 90px;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 10px;
+    border-bottom-style: dashed;
+    border-bottom-color: black;
+    border-bottom-width: 2px
+}
+
+#title a:link {
+    text-decoration: none;
+    color: black;    
+}
+
+#title a:visited {
+    color: black
+}
+
+#title a:hover {
+    color: orange
+}
+
+.next-month-city {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: normal;
+    font-size: 60%
+}
+
+#message {
+    font-size: 170%;
+    font-weight: bold;
+    padding: 6%;
+    text-align: center;
+    border-bottom-style: dashed;
+    border-bottom-color: black;
+    border-bottom-width: 2px;
+    margin-bottom: 40px
+}
+
+.city-home {
+    font-family: 'New Rocker', cursive;
+    font-size: 300%;
+    font-weight: bold;
+    margin-bottom: 5%;
+    margin-top: 8%
+}
+
+.city-home a:link {
+    color: black;
+    text-decoration: none
+}
+
+.city-home a:visited {
+    color: black
+}
+
+.city-home a:hover {
+    color: orange;
+}
+
+.mini-gig {
+    text-align: center
+}
+
+.minilogo {
+    position: relative;
+    width: 16%;
+    height: 120px;
+    float: left;
+    font-family: 'New Rocker', cursive;
+    font-size: 300%;
+    font-weight: bold;
+    color: white;
+    background-color: black
+}
+
+.minigigs {
+  margin-left: 1%;
+}
+
+.minilogoInner {
+    position: relative;
+    top: 40%;    
+}
+
+.mini-gig img {
+    width: 16%;
+    height: 120px;
+    float:left
+}
+
+#header-row {
+    height: 70px
+}
+
+#settings-row .header-cell {
+    height: 70px;
+    padding-top: 30px;
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-weight: bold
+}
+
+#settings-row a:link {
+    color: black;
+    text-decoration: none
+}
+
+#settings-row a:visited {
+    color: black
+}
+
+#settings-row a:hover {
+    color: orange;
+}
+.gig-cell {
+    height: 400px;
+    position: relative;
+    background-color: #efefef
+}
+
+.gig-cell .picture {
+    height: 398px;
+    background-color: black;
+    text-align: center
+}
+
+.gig-cell .picture img {
+    height: 398px;
+    width: 100%
+}
+
+.gig-cell .artist-info {
+    position: absolute;
+    bottom: 0px;
+    background-color: black;
+    background-color: rgba(0,0,0,0.75);
+    color: white
+}
+
+.gig-cell .artist-info .artist {
+    font-weight: bolder;
+    font-size: 30px;
+    padding-top: 13px;
+    padding-left: 10px
+}
+zppp.gig-cell .artist-info .location {
+    font-weight: normal;
+}
+
+.gig-cell .artist-info div {
+    height: 50px
+}
+
+.left-gig-cell {
+    margin-right: 0px;
+}
+
+
+.right-gig-cell {
+    margin-left: 0px !important;
+}
+
+.gig-cell .date {
+    height: 400px;
+    text-align: center;
+    font-size: 500%;
+    font-weight: bolder
+}
+
+.gig-cell .date .row-fluid {
+    height: 25%
+}
+
+.gig-cell .date .span5 {
+    width: 100%;
+    padding-top: 10%;
+}
+
+.gig-cell .popularity {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-weight: bold;
+    font-size: 30px;
+    color: white;
+    background-color: #661818;
+    height: 40px;
+    padding-top: 15px; 
+    padding-left: 15px; 
+    padding-right: 15px;
+    -moz-border-radius: 38px;
+    border-radius: 38px;
+}
+
+.artist-info a:link {
+    color: white;
+    text-decoration: none
+}
+
+.artist-info a:visited {
+    color: white
+}
+
+.artist-info a:hover {
+    color: orange;
+}
+
+#void-events-notification {
+    margin-top: 70px;
+    font-size: 40px;
+    font-weight: bolder;
+    text-align: center;
+    font-family: 'New Rocker', cursive;
+}
+
+#tags-selection {
+    display: none
+}
+
+#tags-selected {
+    border-top-style: dashed;
+    border-top-color: black;
+    border-top-width: 2px
+}
+
+#tags-selected a {
+    font-weight: normal;
+}
+
+#sep1 {
+    display: none
+}
+#sep2 {
+    display: none
+}
+
+a#hide-tags {
+    display: none
+}
+
+a#select-tags-link {
+    display: none;
+    font-weight: bolder
+}
+
+#tags-selection-inner {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: darkgray;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    color: white;
+    margin-bottom: 30px
+}
+
+.tags {
+    font-size: 20px
+}
+
+.tags label {
+    display: inline;
+    margin-left: 5px
+}
+
+.logo {
+    position: relative;
+    font-family: 'New Rocker', cursive;
+    top: 50%;
+    font-size: 1000%;
+    font-weight: bold;
+    color: white
+}
+
+#bottom {
+    margin-top: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'New Rocker', cursive;
+    text-align: center;
+    background-color: black;
+    color: white;
+    height: 3%
+}
+
+#bottom a:link {
+    color: orange;
+    text-decoration: none
+}
+
+#bottom a:visited {
+    color:orange
+}
+
+
+#bottom-show {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'New Rocker', cursive;
+    text-align: center;
+    background-color: black;
+    color: white;
+    height: 3%
+}
+
+#bottom-show a:link {
+    color: orange;
+    text-decoration: none
+}
+
+#bottom-show a:visited {
+    color:orange
+}

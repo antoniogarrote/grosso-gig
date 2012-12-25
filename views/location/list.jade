@@ -1,0 +1,44 @@
+extend ../layout
+block content
+  .row-fluid#header-row
+   .span6.offset3#title
+      | Grosso / Gig
+
+  .row-fluid
+    .span6.offset3#message
+      | Concerts you don't want to miss near you.
+  - for(var city in locations) {
+    .row-fluid.minigigs
+      .span6.offset3
+        .row-fluid
+          .span6.city-home
+            a(href="/Gigs/#{city}/#{year}/#{month}")
+              =city
+            | &nbsp;
+            - nextMonths.forEach(function(month, i) {
+              span.next-month-city
+                | &nbsp;/&nbsp;
+              a(class="next-month-city",href="/Gigs/#{city}/#{month[0]}/#{month[1]}")
+                =month[1]
+            - })
+         
+        .row-fluid
+          .span12.city-gigs
+            - cities[city.toLowerCase()].forEach(function(gig) {
+              .mini-gig
+                a(href="#{gig.linkToMonthListing(city)}",alt="#{gig.data.artist}")
+                  - if(gig.smallImage()==null) {
+                    .minilogo
+                      span.minilogoInner
+                        | G/G
+                  - } else {
+                    img(src="#{gig.smallImage()}",alt="#{gig.data.artist}")
+                  - }
+            - });
+  - }
+  .row-fluid
+    .span6.offset3#bottom
+      | Built with &hearts; by&nbsp;
+      a(href='http://github.com/antoniogarrote')
+        | agh
+      | &nbsp;(c) 2013

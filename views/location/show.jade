@@ -1,0 +1,112 @@
+extend ../layout
+block content
+  .row-fluid#header-row
+   .span6.offset3#title
+      a(href="/")
+        | Grosso / Gig
+  .row-fluid#settings-row
+    .span1.offset3.header-cell#location-name
+      a(href="/Gigs/#{prevLocation}/#{year}/#{monthName}#{tagsArgs}")
+        <&nbsp;
+      | #{locationName}
+      a(href="/Gigs/#{nextLocation}/#{year}/#{monthName}#{tagsArgs}")
+        &nbsp;>
+    .span2.offset3.header-cell#month-name
+      a(href="/Gigs/#{locationName}/#{prevYear}/#{prevMonth}#{tagsArgs}")
+        <&nbsp;
+      | #{monthName}
+      a(href="/Gigs/#{locationName}/#{nextYear}/#{nextMonth}#{tagsArgs}")
+        &nbsp;>
+  .row-fluid#settings-row
+    .span6.offset3.header-cell#tags-selected
+      | Tags &nbsp;//&nbsp;
+      a(id='show-tags',href="#")
+        | show
+      a(id='hide-tags',href="#")
+        | hide
+      span#sep2
+        | &nbsp;|&nbsp;
+      a(id='select-tags-link',href="#")
+        | select
+
+  .row-fluid#tags-selection
+    .span6.offset3#tags-selection-inner
+      - tags.forEach(function(tagGroup) {
+        .row-fluid
+          .offset1.span3.tags
+            - if(tagsMap[tagGroup[0]])
+              input(type='checkbox',id='#{tagGroup[0]}',name='#{tagGroup[0]}',value='#{tagGroup[0]}',checked='checked')
+            - else
+              input(type='checkbox',id='#{tagGroup[0]}',name='#{tagGroup[0]}',value='#{tagGroup[0]}')
+            label(for='#{tagGroup[0]}')
+              =tagGroup[0]
+          .offset1.span3.tags
+            - if(tagsMap[tagGroup[1]])
+              input(type='checkbox',id='#{tagGroup[1]}',name='#{tagGroup[1]}',value='#{tagGroup[1]}',checked='checked')
+            - else
+              input(type='checkbox',id='#{tagGroup[1]}',name='#{tagGroup[1]}',value='#{tagGroup[1]}')
+            label(for='#{tagGroup[1]}')
+              =tagGroup[1]
+          .offset1.span3.tags
+            - if(tagsMap[tagGroup[2]])
+              input(type='checkbox',id='#{tagGroup[2]}',name='#{tagGroup[2]}',value='#{tagGroup[2]}',checked='checked')
+            - else
+              input(type='checkbox',id='#{tagGroup[2]}',name='#{tagGroup[2]}',value='#{tagGroup[2]}')
+            label(for='#{tagGroup[2]}')
+              =tagGroup[2]
+      - })
+  - if(gigs.length === 0) {
+    .row-fluid#void-events-notification
+      .span8.offset2
+        | No events found
+  - }
+  - gigs.forEach(function(gig){
+
+    .row-fluid
+      .span8.offset2.gig-cell
+
+        .row-fluid
+          .span5.left-gig-cell
+           .picture
+             - if(gig.backgroundImage())
+               img(src='#{gig.backgroundImage()}')
+             - else
+               .logo
+                | G/G
+           .popularity
+             =((gig.attendanceCount/max) * 10).toFixed(1)
+             | &nbsp;&hearts;
+          .span7.right-gig-cell.date
+            a.gig-main-date(href="http://songkick.com#{gig.data.link}", target="_blank")
+              .row-fluid
+                .span5
+                  | #{gig.formatDayOfWeek()} #{gig.data.date.getDate()}
+              .row-fluid
+                .span5
+                  =gig.formatMonth()
+              .row-fluid
+                .span5
+                  =gig.data.year
+
+        .row-fluid.artist-info
+          .span12
+            .row-fluid
+              .span12.artist
+                - if(gig.data.lastfmLink) {
+                  a(href="#{gig.data.lastfmLink}", target="_blank")
+                    =gig.formatName()
+                - } else {
+                  =gig.formatName()
+                - }
+                &nbsp;//&nbsp;
+                span.location
+                  a(href="http://songkick.com#{gig.data.link}", target="_blank")
+                    =gig.formatLocation()
+  -})
+
+  .row-fluid
+    .span8.offset2#bottom-show
+      | Built with &hearts; by&nbsp;
+      a(href='http://github.com/antoniogarrote')
+        | agh
+      | &nbsp;(c) 2013
