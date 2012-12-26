@@ -204,6 +204,8 @@ exports.show = function(req, res){
 	    tagsMap[tags[i]] = false;
 	    current.push(tags[i]);
 	}
+	acumTags.push(current);
+
 	var tagsArgs = ""
 	if(tagsSelected != null) {
 	    for(var i=0; i<tagsSelected.length; i++) {

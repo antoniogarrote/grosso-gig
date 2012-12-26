@@ -33,6 +33,7 @@ block content
       a(id='select-tags-link',href="#")
         | select
 
+  =tags.length
   .row-fluid#tags-selection
     .span6.offset3#tags-selection-inner
       - tags.forEach(function(tagGroup) {
@@ -44,20 +45,22 @@ block content
               input(type='checkbox',id='#{tagGroup[0]}',name='#{tagGroup[0]}',value='#{tagGroup[0]}')
             label(for='#{tagGroup[0]}')
               =tagGroup[0]
-          .offset1.span3.tags
-            - if(tagsMap[tagGroup[1]])
-              input(type='checkbox',id='#{tagGroup[1]}',name='#{tagGroup[1]}',value='#{tagGroup[1]}',checked='checked')
-            - else
-              input(type='checkbox',id='#{tagGroup[1]}',name='#{tagGroup[1]}',value='#{tagGroup[1]}')
-            label(for='#{tagGroup[1]}')
-              =tagGroup[1]
-          .offset1.span3.tags
-            - if(tagsMap[tagGroup[2]])
-              input(type='checkbox',id='#{tagGroup[2]}',name='#{tagGroup[2]}',value='#{tagGroup[2]}',checked='checked')
-            - else
-              input(type='checkbox',id='#{tagGroup[2]}',name='#{tagGroup[2]}',value='#{tagGroup[2]}')
-            label(for='#{tagGroup[2]}')
-              =tagGroup[2]
+          - if(tagGroup[1] != null)
+            .offset1.span3.tags
+              - if(tagsMap[tagGroup[1]])
+                input(type='checkbox',id='#{tagGroup[1]}',name='#{tagGroup[1]}',value='#{tagGroup[1]}',checked='checked')
+              - else
+                input(type='checkbox',id='#{tagGroup[1]}',name='#{tagGroup[1]}',value='#{tagGroup[1]}')
+              label(for='#{tagGroup[1]}')
+                =tagGroup[1]
+          - if(tagGroup[2] != null)
+            .offset1.span3.tags
+              - if(tagsMap[tagGroup[2]])
+                input(type='checkbox',id='#{tagGroup[2]}',name='#{tagGroup[2]}',value='#{tagGroup[2]}',checked='checked')
+              - else
+                input(type='checkbox',id='#{tagGroup[2]}',name='#{tagGroup[2]}',value='#{tagGroup[2]}')
+              label(for='#{tagGroup[2]}')
+                =tagGroup[2]
       - })
   - if(gigs.length === 0) {
     .row-fluid#void-events-notification
