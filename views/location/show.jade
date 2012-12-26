@@ -33,7 +33,6 @@ block content
       a(id='select-tags-link',href="#")
         | select
 
-  =tags.length
   .row-fluid#tags-selection
     .span6.offset3#tags-selection-inner
       - tags.forEach(function(tagGroup) {
@@ -69,22 +68,22 @@ block content
   - }
   - gigs.forEach(function(gig){
 
-    .row-fluid
+    .row-fluid(itemscope,itemtype="http://schema.org/MusicEvent")
       .span8.offset2.gig-cell
 
         .row-fluid
           .span5.left-gig-cell
            .picture
              - if(gig.backgroundImage())
-               img(src='#{gig.backgroundImage()}')
+               img(src='#{gig.backgroundImage()}', itemprop="image")
              - else
                .logo
                 | G/G
            .popularity
              =((gig.attendanceCount/max) * 100).toFixed(0)
              | &nbsp;&hearts;
-          .span7.right-gig-cell.date
-            a.gig-main-date(href="http://songkick.com#{gig.data.link}", target="_blank")
+          .span7.right-gig-cell.date(itemprop="startDate")
+            a.gig-main-date(href="http://songkick.com#{gig.data.link}", target="_blank",itemprop="url")
               .row-fluid
                 .span5
                   | #{gig.formatDayOfWeek()} #{gig.data.date.getDate()}
@@ -98,16 +97,18 @@ block content
         .row-fluid.artist-info
           .span12
             .row-fluid
-              .span12.artist
+              .span12.artist(itemprop="performer",itemscope, itemtype="http://schema.org/Person")
                 - if(gig.data.lastfmLink) {
-                  a(href="#{gig.data.lastfmLink}", target="_blank")
-                    =gig.formatName()
+                  .span(itemprop="name")
+                    a(href="#{gig.data.lastfmLink}", target="_blank")
+                      =gig.formatName()
                 - } else {
-                  =gig.formatName()
+                  .span(itmeprop="name")
+                    =gig.formatName()
                 - }
                 &nbsp;//&nbsp;
-                span.location
-                  a(href="http://songkick.com#{gig.data.link}", target="_blank")
+                span.location(itemprop="location",itemscope, itemtype="http://schema.org/Place")
+                  a(href="http://songkick.com#{gig.data.link}", target="_blank", itemprop="url")
                     =gig.formatLocation()
   -})
 
