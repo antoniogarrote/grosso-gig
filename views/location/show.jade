@@ -77,10 +77,10 @@ block content
         | #{gig.ISODateString()}
       .span(style="display:none",itemprop="location",itemscope, itemtype="http://schema.org/Place")
         .span(style="display:none",itemprop="name")
-        | #{gig.formatLocation()}, #{locationName}
+          | #{gig.formatLocation()}, #{locationName}
       .span(style="display:none", itemscope, itemtype="http://schema.org/Person")
         .span(style="display:none",itemprop="name")
-          = gig.formatLocation()
+          = gig.formatName()
       .span8.offset2.gig-cell
 
         .row-fluid
