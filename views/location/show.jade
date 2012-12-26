@@ -69,17 +69,10 @@ block content
   - gigs.forEach(function(gig){
 
     .row-fluid(itemscope,itemtype="http://schema.org/MusicEvent")
-      .span(style="display:none",itemprop="name")
-        | #{gig.formatName()} at #{gig.formatLocation()}
-      .a(style="display:none", itemprop="url",href="http://songkick.com#{gig.data.link}")
-        | #{gig.formatName()} at #{gig.formatLocation()}
-      .span(style="display:none", itemprop="startDate")
+      meta(itemprop="startDate")
         | #{gig.ISODateString()}
-      .span(style="display:none",itemprop="location",itemscope, itemtype="http://schema.org/Place")
-        .span(style="display:none",itemprop="name")
-          | #{gig.formatLocation()}, #{locationName}
-      .span(style="display:none", itemscope, itemtype="http://schema.org/Person")
-        .span(style="display:none",itemprop="name")
+      meta(itemprop="performer",itemscope, itemtype="http://schema.org/Person")
+        meta(itemprop="name")
           = gig.formatName()
       .span8.offset2.gig-cell
 
@@ -109,16 +102,17 @@ block content
         .row-fluid.artist-info
           .span12
             .row-fluid
-              .span12.artist(itemprop="performer")
-                - if(gig.data.lastfmLink) {
-                  a(href="#{gig.data.lastfmLink}", target="_blank")
+              .span12.artist
+                span(itemprop="name")
+                  - if(gig.data.lastfmLink) {
+                    a(href="#{gig.data.lastfmLink}", target="_blank")
+                      =gig.formatName()
+                  - } else {
                     =gig.formatName()
-                - } else {
-                  =gig.formatName()
-                - }
+                  - }
                 &nbsp;//&nbsp;
-                span.location
-                  a(href="http://songkick.com#{gig.data.link}", target="_blank")
+                span.location(itemprop="location",itemscope, itemtype="http://schema.org/Place")
+                  a(href="http://songkick.com#{gig.data.link}", target="_blank", itemprop="name")
                     =gig.formatLocation()
   -})
 
