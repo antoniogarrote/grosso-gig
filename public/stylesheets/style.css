@@ -146,7 +146,7 @@ a.gig-main-date:hover {
 @media only screen and (max-device-width: 480px) {
 
     #settings-row .header-cell {
-	font-size: 20px
+	font-size: 30px
     }
 }
 
@@ -276,6 +276,7 @@ a.gig-main-date:hover {
 
 #void-events-notification {
     margin-top: 70px;
+    margin-bottom: 200px;
     font-size: 40px;
     font-weight: bolder;
     text-align: center;
