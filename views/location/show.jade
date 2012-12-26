@@ -69,11 +69,11 @@ block content
   - gigs.forEach(function(gig){
 
     .row-fluid(itemscope,itemtype="http://schema.org/MusicEvent")
-      meta(itemprop="startDate", content="#{gig.ISODateString()}")
-      span(itemprop="performer",itemscope, itemtype="http://schema.org/Person")
-        meta(itemprop="name", content="#{gig.formatName()}")
       .span8.offset2.gig-cell
-
+        .row-fluid
+          meta(itemprop="startDate", content="#{gig.ISODateString()}")
+          span(itemprop="performer",itemscope, itemtype="http://schema.org/Person")
+            meta(itemprop="name", content="#{gig.formatName()}")
         .row-fluid
           .span5.left-gig-cell
            .picture
