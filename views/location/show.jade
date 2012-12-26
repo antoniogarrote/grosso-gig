@@ -5,6 +5,8 @@ block content
       a(href="/")
         | Grosso / Gig
   .row-fluid#settings-row
+    .span8.offset2.border
+  .row-fluid#settings-row
     .span3.offset3.header-cell#location-name
       a(href="/Gigs/#{prevLocation}/#{year}/#{monthName}#{tagsArgs}")
         <&nbsp;
@@ -17,6 +19,8 @@ block content
       | #{monthName}
       a(href="/Gigs/#{locationName}/#{nextYear}/#{nextMonth}#{tagsArgs}")
         &nbsp;>
+  .row-fluid#settings-row
+    .span8.offset2.border
   .row-fluid#settings-row
     .span6.offset3.header-cell#tags-selected
       | Tags &nbsp;//&nbsp;
@@ -74,7 +78,7 @@ block content
                .logo
                 | G/G
            .popularity
-             =((gig.attendanceCount/max) * 10).toFixed(1)
+             =((gig.attendanceCount/max) * 100).toFixed(0)
              | &nbsp;&hearts;
           .span7.right-gig-cell.date
             a.gig-main-date(href="http://songkick.com#{gig.data.link}", target="_blank")
