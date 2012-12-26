@@ -71,11 +71,16 @@ block content
     .row-fluid(itemscope,itemtype="http://schema.org/MusicEvent")
       .span(style="display:none",itemprop="name")
         | #{gig.formatName()} at #{gig.formatLocation()}
+      .a(style="display:none", itemprop="url",href="http://songkick.com#{gig.data.link}")
+        | #{gig.formatName()} at #{gig.formatLocation()}
       .span(style="display:none", itemprop="startDate")
         | #{gig.ISODateString()}
       .span(style="display:none",itemprop="location",itemscope, itemtype="http://schema.org/Place")
         .span(style="display:none",itemprop="name")
         | #{gig.formatLocation()}, #{locationName}
+      .span(style="display:none", itemscope, itemtype="http://schema.org/Person")
+        .span(style="display:none",itemprop="name")
+          = gig.formatLocation()
       .span8.offset2.gig-cell
 
         .row-fluid
@@ -104,18 +109,16 @@ block content
         .row-fluid.artist-info
           .span12
             .row-fluid
-              .span12.artist(itemprop="performer",itemscope, itemtype="http://schema.org/Person")
+              .span12.artist(itemprop="performer")
                 - if(gig.data.lastfmLink) {
-                  .span(itmeprop="name")
-                    a(href="#{gig.data.lastfmLink}", target="_blank")
-                      =gig.formatName()
-                - } else {
-                  .span(itmeprop="name")
+                  a(href="#{gig.data.lastfmLink}", target="_blank")
                     =gig.formatName()
+                - } else {
+                  =gig.formatName()
                 - }
                 &nbsp;//&nbsp;
                 span.location
-                  a(href="http://songkick.com#{gig.data.link}", target="_blank", itemprop="url")
+                  a(href="http://songkick.com#{gig.data.link}", target="_blank")
                     =gig.formatLocation()
   -})
 
