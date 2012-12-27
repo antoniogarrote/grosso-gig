@@ -1,5 +1,27 @@
 extend ../layout
 block content
+  script(type='text/javascript') 
+    $(document).ready(function() {
+      window.registerGigMap = function(id) {
+        var gig = $("#"+id);
+        var hide = false;
+        var link = gig.children(".artist-info").children().children().children(".artist").children(".location").children("a");
+        var map = gig.children("div:nth(1)").children("div:nth(1)").children(".gig-data-container");
+        link.on("mouseenter", function(){
+          if(hide === false) {
+            map.hide();
+            hide = true;
+          }
+        });
+        link.on("mouseleave", function(){
+          if(hide === true) {
+            map.show();
+            hide = false;
+          }
+        });
+      }
+    });
+
   .row-fluid#header-row
    .span6.offset3#title
       a(href="/")
@@ -66,10 +88,10 @@ block content
       .span8.offset2
         | No events found
   - }
-  - gigs.forEach(function(gig){
+  - gigs.forEach(function(gig,i){
 
     .row-fluid(itemscope,itemtype="http://schema.org/MusicEvent")
-      .span8.offset2.gig-cell
+      .span8.offset2.gig-cell(id="gig#{i}")
         .row-fluid
           meta(itemprop="startDate", content="#{gig.ISODateString()}")
           span(itemprop="performer",itemscope, itemtype="http://schema.org/Person")
@@ -78,6 +100,10 @@ block content
           .span5.left-gig-cell
            .picture
              - if(gig.backgroundImage())
+               script(type='text/javascript') 
+                 $(document).ready(function() {
+                   registerGigMap("gig#{i}");
+                 });
                img(src='#{gig.backgroundImage()}', itemprop="image")
              - else
                .logo
@@ -85,17 +111,48 @@ block content
            .popularity
              =((gig.attendanceCount/max) * 100).toFixed(0)
              | &nbsp;&hearts;
-          .span7.right-gig-cell.date
-            a.gig-main-date(href="http://songkick.com#{gig.data.link}", target="_blank")
-              .row-fluid
-                .span5
-                  | #{gig.formatDayOfWeek()} #{gig.data.date.getDate()}
-              .row-fluid
-                .span5
-                  =gig.formatMonth()
-              .row-fluid
-                .span5
-                  =gig.data.year
+          - if(gig.data.map)
+            .span7.right-gig-cell.date(style="background-image:url('/a#{gig.data.map}')")
+              - if(gig.details && gig.details.price)
+                .gig-data-container
+                  a.gig-main-date(href="http://songkick.com#{gig.data.link}", target="_blank")
+                    .row-fluid
+                      .span5
+                        | #{gig.formatDayOfWeek()} #{gig.data.date.getDate()}
+                    .row-fluid
+                      .span5
+                        | #{gig.formatMonthSmall()} #{gig.data.year}
+                      .row-fluid
+                        .span5.price
+                          =gig.details.price
+              - else
+                .gig-data-container.centered-date
+                  a.gig-main-date(href="http://songkick.com#{gig.data.link}", target="_blank")
+                    .row-fluid
+                      .span5
+                        | #{gig.formatDayOfWeek()} #{gig.data.date.getDate()}
+                    .row-fluid
+                      .span5
+                        =gig.formatMonth()
+
+                    .row-fluid
+                      .span5.centered-date
+                        =gig.data.year
+
+
+
+          - else
+            .span7.right-gig-cell.date
+              a.gig-main-date(href="http://songkick.com#{gig.data.link}", target="_blank")
+                .row-fluid
+                  .span5
+                    | #{gig.formatDayOfWeek()} #{gig.data.date.getDate()}
+                .row-fluid
+                  .span5
+                    =gig.formatMonth()
+                .row-fluid
+                  .span5
+                    =gig.data.year
 
         .row-fluid.artist-info
           .span12

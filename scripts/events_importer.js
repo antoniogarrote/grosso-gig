@@ -2,7 +2,6 @@ var fs = require('fs');
 var Utils = require("./utils").Utils;
 var mongo = require('mongodb');
 var crypto = require('crypto');
-var md5sum = crypto.createHash('md5');
 
 var client = new mongo.Db('grossogig', new mongo.Server("127.0.0.1", 27017, {}), {w: 1});
 

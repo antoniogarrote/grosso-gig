@@ -33,4 +33,6 @@ $(document).ready(function() {
 
 	window.location.href = (location + args);
     });
+
+		    
 });

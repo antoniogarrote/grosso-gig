@@ -8,7 +8,7 @@ a.gig-main-date:visited {
 }
 
 a.gig-main-date:hover {
-    color: orange
+    color: darkorange
 }
 
 #title {
@@ -51,7 +51,7 @@ a.gig-main-date:hover {
 }
 
 #title a:hover {
-    color: orange
+    color: darkorange
 }
 
 .next-month-city {
@@ -93,7 +93,7 @@ a.gig-main-date:hover {
 }
 
 .city-home a:hover {
-    color: orange;
+    color: darkorange;
 }
 
 .mini-gig {
@@ -166,7 +166,7 @@ a.gig-main-date:hover {
 }
 
 #settings-row a:hover {
-    color: orange;
+    color: darkorange;
 }
 .gig-cell {
     height: 400px;
@@ -214,6 +214,14 @@ a.gig-main-date:hover {
     height: 50px
 }
 
+.gig-data-container {
+    width: 80%;
+    height: 80%;
+    margin: auto;
+    margin-top: 2%;
+    background-color: rgba(238, 233, 233, 0.75)
+}
+
 .left-gig-cell {
     margin-right: 0px;
 }
@@ -226,8 +234,20 @@ a.gig-main-date:hover {
 .gig-cell .date {
     height: 400px;
     text-align: center;
-    font-size: 500%;
+    font-size: 350%;
     font-weight: bolder
+}
+
+.centered-date {
+    padding-top: 5%
+}
+
+.gig-cell .price {
+    font-size: 60%;
+    font-weight: bold;
+    border-top-style: dashed;
+    border-top-width: 2px;
+    margin-top: 15%
 }
 
 .gig-cell .date .row-fluid {
@@ -273,7 +293,7 @@ a.gig-main-date:hover {
 }
 
 .artist-info a:hover {
-    color: orange;
+    color: darkorange;
 }
 
 #void-events-notification {
@@ -361,12 +381,12 @@ a#select-tags-link {
 }
 
 #bottom a:link {
-    color: orange;
+    color: darkorange;
     text-decoration: none
 }
 
 #bottom a:visited {
-    color:orange
+    color:darkorange
 }
 
 
@@ -381,10 +401,10 @@ a#select-tags-link {
 }
 
 #bottom-show a:link {
-    color: orange;
+    color: darkorange;
     text-decoration: none
 }
 
 #bottom-show a:visited {
-    color:orange
+    color:darkorange
 }
