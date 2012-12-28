@@ -29,7 +29,7 @@ if(fs.existsSync(outPath)) {
 		Utils.repeat(0, parsed.length, function(k,env) {
 		    var floop = arguments.callee;
 		    var details = parsed[env._i];
-		    console.log("** Updating "+details.link);
+		    console.log("** Updating "+details.link+" WTH "+details.address);
 
 		    cursor = collection.find({link: details.link});
 		    cursor.toArray(function(err, gigs) {

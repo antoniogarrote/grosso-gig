@@ -1,4 +1,4 @@
-var page = require('webpage').create();
+var webpage = require('webpage')
 var system = require('system');
 var fs = require('fs');
 
@@ -40,32 +40,57 @@ var outDir = outPath+"/"+(1900+now.getYear())+"/"+(now.getMonth()+1)+"/"+now.get
 outPath = outDir+"/"+city+"_details.json";
 
 var getDetails = function(url, cb) {
+    try {
     console.log("OPENING "+url);
+    //setTimeout(function() {
+    var page = webpage.create();
     page.open("http://www.songkick.com"+url, function(status) {
+	try {
 	console.log("RETURNED:"+status);
 	console.log("\n\n");
 
-	var result = page.evaluate(function() {
-	    try {
-		var parsed = {};
-		parsed['address'] = $(".adr span").map(function(i,e) { return $(e).text(); }).toArray().join(", ");
-
-		if($("#tickets table:first .price:first").length > 0) {
-		    parsed['price'] = $("#tickets table:first .price:first").text();
-		    parsed['vendors'] = $("#tickets table:first .vendor").map(function(i,e) { 
-			var m = {}; 
-			m['vendor'] = $(e).attr("title"); 
-			m['link'] = $(e).attr("href"); 
-			return m; }).toArray();
-		}
-		return parsed;
-	    } catch(e) {
-		return null;
+	if(status === "success") {
+	    page.onConsoleMessage = function(msg) {
+		console.log(msg);
 	    }
-	});
 
-	cb(result);
+	    var result = page.evaluate(function() {
+		try {
+		    var parsed = {};
+		    console.log("ABOUT TO PARSE");
+		    console.log($(".adr span").length);
+		    parsed['address'] = $(".adr span").map(function(i,e) { return $(e).text(); }).toArray().join(", ");
+
+		    if($("#tickets table:first .price:first").length > 0) {
+			parsed['price'] = $("#tickets table:first .price:first").text();
+			parsed['vendors'] = $("#tickets table:first .vendor").map(function(i,e) { 
+			    var m = {}; 
+			    m['vendor'] = $(e).attr("title"); 
+			    m['link'] = $(e).attr("href"); 
+			    return m; }).toArray();
+		    }
+		    return parsed;
+		} catch(e) {
+		    return null;
+		}
+	    });
+
+	    cb(result);
+	} else {
+	    cb(null);
+	}
+	} catch(e) {
+	    console.log("(!!) Error in parsing callback");
+	    console.log(e);
+	    cb(null);
+	}
     });
+    //},1000);
+    } catch(e) {
+	console.log("(!!) Error trying to open page");
+	console.log(e);
+	cb(null);
+    }
 };
 
 
@@ -88,7 +113,7 @@ var acum = [];
 Utils.repeat(0, links.length, function(k,env) {
     var floop = arguments.callee;
     var link =links[env._i];
-    console.log("* trying to parse "+link);
+    console.log("* trying to parse "+link+" "+env._i+"/"+links.length);
     getDetails(link, function(r) {
 	if(r != null) {
 	    console.log("*PARSED");

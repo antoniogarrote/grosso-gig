@@ -50,9 +50,10 @@ client.open(function(err, p_client) {
 			var md5sum = crypto.createHash('md5');
 			md5sum.update(url);
 			var mapURL = '/images/maps/'+md5sum.digest("hex")+'.png';
-			cache[event.location] = path.resolve(__dirname, '../public'+mapURL);
+			var imagePath = path.resolve(__dirname, '../public'+mapURL);
+			cache[event.location] = mapURL;
 			console.log("SAVING: curl \""+url+"\" > "+cache[event.location]);
-			exec("curl \""+url+"\" > "+cache[event.location],function() {
+			exec("curl \""+url+"\" > "+imagePath,function() {
 			    cb(mapURL);
 			});			
 		    });

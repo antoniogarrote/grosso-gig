@@ -99,11 +99,12 @@ block content
         .row-fluid
           .span5.left-gig-cell
            .picture
-             - if(gig.backgroundImage())
+             - if(gig.data.map)
                script(type='text/javascript') 
                  $(document).ready(function() {
                    registerGigMap("gig#{i}");
                  });
+             - if(gig.backgroundImage())
                img(src='#{gig.backgroundImage()}', itemprop="image")
              - else
                .logo
