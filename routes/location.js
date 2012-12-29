@@ -70,7 +70,7 @@ client.open(function(err, p_client) {
 
 
 
-var findEvents = function(city,month,year,limit,tagsSelected,cb) {
+var findEvents = function(city,month,year,limit,tagsSelected,startDate,cb) {
 	client.collection(city, function(err, collection) {
 	    var args = {};
 	    if(month != null)
@@ -81,6 +81,9 @@ var findEvents = function(city,month,year,limit,tagsSelected,cb) {
 
 	    if(tagsSelected != null)
 		args['tags'] = {'$in': tagsSelected};
+
+	    if(startDate != null)
+		args['date'] = {$gte: startDate};
 
 	    var cursor = collection.find(args);
 	    cursor.sort({"attendanceCount":-1}).limit(limit);
@@ -110,7 +113,7 @@ exports.list = function(req, res){
     Utils.repeat(0, cities.length, function(k,env) {
 	var floop = arguments.callee;
 	var city = cities[env._i];
-	findEvents(city,null,null,12,null,function(gigs) {
+	findEvents(city,null,null,12,null,null,function(gigs) {
 	    var gigsWrapped = [];
 	    for(var i=0; i<gigs.length; i++)
 		gigsWrapped.push(new Gig(gigs[i], i+1));
@@ -183,7 +186,7 @@ exports.show = function(req, res){
     }
 	
 
-    findEvents(location,month,year,20,tagsSelected,function(gigs) {
+    findEvents(location,month,year,20,tagsSelected,(new Date()),function(gigs) {
 	var acum = [], wrapper;
 	for(var i=0; i<gigs.length; i++) {
 	    wrapper = new Gig(gigs[i], i+1);
